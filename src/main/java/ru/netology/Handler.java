@@ -1,7 +1,7 @@
 package ru.netology;
 
-import java.io.BufferedReader;
+import java.io.BufferedOutputStream;
 
 public interface Handler {
-    public void handler(Request request, BufferedReader responseStream);
+     void handle(Request request, BufferedOutputStream responseStream);
 }
