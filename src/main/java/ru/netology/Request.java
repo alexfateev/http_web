@@ -15,12 +15,15 @@ public class Request {
 
     public Request(String requestLine) {
         final var parts = requestLine.split(" ");
-        if (parts.length != 3) {
-            this.method = "";
-            this.path = "";
-        } else {
-            this.method = parts[0];
-            this.path = parts[1];
-        }
+        this.method = parts[0];
+        this.path = parts[1];
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "method='" + method + '\'' +
+                ", path='" + path + '\'' +
+                '}';
     }
 }
