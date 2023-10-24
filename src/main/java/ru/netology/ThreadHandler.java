@@ -1,5 +1,7 @@
 package ru.netology;
 
+import org.apache.http.client.utils.URLEncodedUtils;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +16,16 @@ public class ThreadHandler implements Runnable {
     public ThreadHandler(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
+    }
+
+    public void badRequest(BufferedOutputStream out) throws IOException {
+        out.write((
+                "HTTP/1.1 400 Bad Request\r\n" +
+                        "Content-Length: 0\r\n" +
+                        "Connection: close\r\n" +
+                        "\r\n"
+        ).getBytes());
+        out.flush();
     }
 
     @Override
